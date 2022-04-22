@@ -8,6 +8,24 @@ import {
 } from 'react-native';
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {nota1: 0, nota2: 0, faltas: 0, resultado: ''};
+    this.calcular = this.calcular.bind(this);
+  }
+
+  calcular() {
+    let num1 = parseInt(this.state.nota1);
+    let num2 = parseInt(this.state.nota2);
+    let media = (num1 + num2) / 2;
+
+    if (media >= 6 && this.state.faltas <= 10) {
+      this.setState({resultado: 'Aluno foi aprovado'});
+    } else {
+      this.setState({resultado: 'Aluno foi reprovado'})
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -15,22 +33,31 @@ export default class App extends Component {
           style={styles.input}
           keyboardType="numeric"
           placeholder="Nota 1"
+          onChangeText={nota1 => {
+            this.setState({nota1});
+          }}
         />
         <TextInput
           style={styles.input}
           keyboardType="numeric"
           placeholder="Nota 2"
+          onChangeText={nota2 => {
+            this.setState({nota2});
+          }}
         />
         <TextInput
           style={styles.input}
           keyboardType="numeric"
           placeholder="Número de faltas"
+          onChangeText={faltas => {
+            this.setState({faltas});
+          }}
         />
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={this.calcular}>
           <Text style={styles.textButton}>Calcular</Text>
         </TouchableOpacity>
         <View>
-          <Text style={styles.textResult}>Valor foi aprovado</Text>
+          <Text style={styles.textResult}>{this.state.resultado}</Text>
         </View>
       </View>
     );

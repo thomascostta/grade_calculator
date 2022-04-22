@@ -16,8 +16,6 @@
  </p>
 
 
-
-
 # How to use :fire:
 
 ## Clone this repository
@@ -32,7 +30,9 @@ $ cd grade_calculator
 ```bash
 npm i [or] yarn
 ```
-  
+## Start your Metro server:
+`npx react-native start`
+
 ## Run :iphone:
 Run the application (iOS)
 ```bash

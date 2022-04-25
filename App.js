@@ -5,6 +5,7 @@ import {
   View,
   TextInput,
   StyleSheet,
+  AppState,
 } from 'react-native';
 
 export default class App extends Component {
@@ -14,6 +15,20 @@ export default class App extends Component {
     this.calcular = this.calcular.bind(this);
   }
 
+  componentDidMount() {
+    console.log('Teste - Fetch API');
+    AppState.addEventListener('change', this.handleChange);
+  }
+
+  componentWillUnmount() {
+    console.log('Teste - Unmount');
+    AppState.removeEventListener('change', this.handleChange);
+  }
+
+  handleChange = () => {
+    console.log(AppState.currentState);
+  };
+
   calcular() {
     let num1 = parseInt(this.state.nota1);
     let num2 = parseInt(this.state.nota2);
@@ -22,7 +37,7 @@ export default class App extends Component {
     if (media >= 6 && this.state.faltas <= 10) {
       this.setState({resultado: 'Aluno foi aprovado'});
     } else {
-      this.setState({resultado: 'Aluno foi reprovado'})
+      this.setState({resultado: 'Aluno foi reprovado'});
     }
   }
 
@@ -36,6 +51,7 @@ export default class App extends Component {
           onChangeText={nota1 => {
             this.setState({nota1});
           }}
+          value={this.state.nota1}
         />
         <TextInput
           style={styles.input}
@@ -44,6 +60,7 @@ export default class App extends Component {
           onChangeText={nota2 => {
             this.setState({nota2});
           }}
+          value={this.state.nota2}
         />
         <TextInput
           style={styles.input}
@@ -52,6 +69,7 @@ export default class App extends Component {
           onChangeText={faltas => {
             this.setState({faltas});
           }}
+          value={this.state.faltas}
         />
         <TouchableOpacity style={styles.button} onPress={this.calcular}>
           <Text style={styles.textButton}>Calcular</Text>

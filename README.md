@@ -12,7 +12,7 @@
 
 # Overview :book:
  <p>
-  Calculadora de Notas usando React Native CLI com componente de classe.
+  Calculadora de Notas Simples usando React Native CLI com Componentes de classe, com objetivo de estudar classe e ciclo de vida .
  </p>
 
 

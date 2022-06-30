@@ -22,26 +22,22 @@
 ```bash
 $ git clone https://github.com/thomascostta/grade_calculator.git
 ```
-## Go into the repository
-```bash
-$ cd grade_calculator
-```
+
 ## Install the dependencies
-```bash
-npm i [or] yarn
-```
+`npm i` or `yarn`
+
 ## Start your Metro server:
 `npx react-native start`
 
 ## Run :iphone:
-Run the application (iOS)
-```bash
-$ react-native run-ios --simulator="iPhone XS Max"
-```
 Run the application (Android)
-```bash
-$ react-native run-android
-```
+
+`react-native run-android`
+
+Run the application (iOS)
+
+`react-native run-ios --simulator="iPhone model"`
+
 ---
 
 # How to contribute :gear:
